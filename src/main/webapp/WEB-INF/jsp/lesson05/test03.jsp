@@ -60,7 +60,7 @@
 					<fmt:formatDate value="${date }" pattern="yyyy년 M월 d일" />
 				</td>
 				
-				<td><fmt:formatNumber value="${bills.installment }" /></td>
+				<td>${bills.installment}</td>
 			</tr>
 			</c:forEach>	
 		</tbody>
