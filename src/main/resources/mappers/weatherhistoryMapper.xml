@@ -20,4 +20,34 @@
  		FROM `weatherhistory`
  	
  	</select>
+ 	
+ 	
+ 	<insert id="insertWeatherhistoryList" parameterType="map">
+ 		INSERT INTO `weatherhistory`
+	 		(
+		 		`date`
+	 			, `weather`
+	 			, `temperatures`
+	 			, `precipitation`
+	 			, `microDust`
+	 			, `windSpeed`
+	 			, `createdAt`
+	 			, `updatedAt`
+		 		
+	 		)
+	 	VALUES	
+	 		(
+	 		<!-- DAO에 @param 이름과 같은 값 -->
+	 			#{date},
+				#{weather},
+				#{temperatures},
+				#{precipitation},
+				#{microDust},
+				#{windSpeed},
+				now(),
+				now()
+	 		
+	 		)
+ 	
+ 	</insert>
  </mapper>

@@ -7,68 +7,74 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        
 
 <title>날씨 정보 페이지</title>
 </head>
 <body>
-
-	<div>
-		<div class="d-flex col-2">
-			<div class="Justify-content-start">
-				<nav>
-					<ul class="nav">
-						<li class="nav-item nav-fill"><a href="#">날씨</a></li>
-						<li class="nav-item nav-fill"><a href="#">날씨입력</a></li>
-						<li class="nav-item nav-fill"><a href="#">테마날씨</a></li>
-						<li class="nav-item nav-fill"><a href="#">관측기후</a></li>
-					</ul>
-				</nav>
+	<div class="d-flex">
+		<div class="col-2 bg-primary">
+			<div class="logo">
+			
+				<img width="200" src="https://blog.kakaocdn.net/dn/TxmeD/btqCKArBvPm/2tzfJfINwg0WWmCzC4jKW0/img.jpg">
 			</div>
+			<div>
+				 <nav>
+	                    <ul class="nav flex-column">
+	                        <li class="nav-item"><a class="nav-link text-white" href="http://localhost:8080//lesson06/test01">날씨</a></li>
+	                        <li class="nav-item"><a class="nav-link text-white" href="http://localhost:8080//lesson06/test02">날씨입력</a></li>
+	                        <li class="nav-item"><a class="nav-link text-white" href="#">테마날씨</a></li>
+	                        <li class="nav-item"><a class="nav-link text-white" href="#">관측기후</a></li>
+	                    </ul>
+	              </nav>
+              </div>       
 		</div>
-		<div class="col-10 container">
+			
+		<div class="col-10">
 			<header>
 				<h2>과거 날씨</h2>
-				
 			</header>
 			<section>	
-					<table class="table text-center">
-						<thead>
-								<tr>
-									<th>날짜</th>
-									<th>날씨</th>
-									<th>기온</th>
-									<th>강수량</th>
-									<th>미세먼지</th>
-									<th>풍속</th>
-								</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="weather" items="${weatherhistory  }">
-							<tr>
-								<td>
-								
-								<fmt:formatDate value="${weather.date }" pattern="yyyy년 MM월 dd일" />
-								</td>
+				<table class="table text-center">
+					<thead>
+						<tr>
+							<th>날짜</th>
+							<th>날씨</th>
+							<th>기온</th>
+							<th>강수량</th>
+							<th>미세먼지</th>
+							<th>풍속</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="weather" items="${weatherhistory  }">
+						<tr>
+							<td>	
+							<fmt:formatDate value="${weather.date }" pattern="yyyy년 M월 d일" />
+							</td>
 									
-								<td>
-								<c:choose>
-									<c:when test="${fn:contains(weather.weather, '맑음') }">
-									<img width="20" src="http://marondal.com/material/images/dulumary/web/jstl/sunny.jpg">
-									</c:when>
-									<c:when test="${fn:contains(weather.weather, '구름조금') }">
-									<img width="20" src="http://marondal.com/material/images/dulumary/web/jstl/partlyCloudy.jpg">
-									</c:when>
-									<c:when test="${fn:contains(weather.weather, '흐림') }">
-									<img width="20" src="http://marondal.com/material/images/dulumary/web/jstl/cloudy.jpg">
-									</c:when>
-									<c:otherwise>
-									<img width="20" src="http://marondal.com/material/images/dulumary/web/jstl/rainy.jpg">
-									</c:otherwise>
+							<td>
+							<c:choose>
+								<c:when test="${fn:contains(weather.weather, '맑음') }">
+								<img width="20" src="http://marondal.com/material/images/dulumary/web/jstl/sunny.jpg">
+								</c:when>
+								<c:when test="${fn:contains(weather.weather, '구름조금') }">
+								<img width="20" src="http://marondal.com/material/images/dulumary/web/jstl/partlyCloudy.jpg">
+								</c:when>
+								<c:when test="${fn:contains(weather.weather, '흐림') }">
+								<img width="20" src="http://marondal.com/material/images/dulumary/web/jstl/cloudy.jpg">
+								</c:when>
+								<c:otherwise>
+								<img width="20" src="http://marondal.com/material/images/dulumary/web/jstl/rainy.jpg">
+								</c:otherwise>
 									
-								</c:choose>
-								</td>
+							</c:choose>
+							</td>
 							
 								<td>${weather.temperatures }℃</td>
 								<td>${weather.precipitation }mm</td>
@@ -79,11 +85,22 @@
 						</tbody>
 					</table>
 			</section>	
-		</div>
-	
-		<footer></footer>
 		
+		</div>
 	</div>
+	
+		<footer class="d-flex">		
+			<div class="col-2">
+				<img width="100" src="https://blog.kakaocdn.net/dn/TxmeD/btqCKArBvPm/2tzfJfINwg0WWmCzC4jKW0/img.jpg">
+			</div>
+			<div class="text-secondary">
+				07062) 서울시 동작구 여의대방로16길 61<br>
+				Copyrightⓒ2021 X KMA All rights reserved.
+			</div>
+			
+		</footer>
+		
+	
 
 </body>
 </html>

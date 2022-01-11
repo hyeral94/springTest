@@ -19,9 +19,19 @@ public class WeatherhistoryBO {
 		return weatherhistoryDAO.selectWeatherhistoryList();
 	}
 	
-//	public addWeatherhistory(Date date, String weather, double temperatures, double precipitation, String microDust
-//			double windSpeed) {
-//		return weatherhistoryDAO.selectWeatherhistoryList(date, weather, temperatures, precipitation, microDust, windSpeed);
-//		
-//	}
+	
+	
+	public int addWeatherhistoryList(
+			Date date, 
+			String weather,
+			double temperatures, 
+			double precipitation,
+			String microDust,
+			double windSpeed){
+		
+		return weatherhistoryDAO.insertWeatherhistoryList(date, weather, temperatures, precipitation, microDust, windSpeed);
+	}
+	
+	
 }
+

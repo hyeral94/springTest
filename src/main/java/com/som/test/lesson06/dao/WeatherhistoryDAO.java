@@ -14,13 +14,13 @@ public interface WeatherhistoryDAO {
 	
 	public List<Weatherhistory> selectWeatherhistoryList();
 	
-//	public List<Weatherhistory> selectWeatherhistoryList(
-//			@Param("date") Date date,
-//			@Param("weather") String weather,
-//			@Param("temperatures") double temperatures,
-//			@Param("precipitation") double precipitation,
-//			@Param("microDust") String microDust,
-//			@Param("windSpeed") double windSpeed);
+	public int insertWeatherhistoryList(
+			@Param("date") Date date,
+			@Param("weather") String weather,
+			@Param("temperatures") double temperatures,
+			@Param("precipitation") double precipitation,
+			@Param("microDust") String microDust,
+			@Param("windSpeed") double windSpeed);
 		
 	
 }
