@@ -11,7 +11,10 @@ public class FavoriteBO {
 	@Autowired
 	private FavoriteDAO favoriteDAO;
 	
-	public int addFavorite() {
+	public int getFavorite() {
 		return favoriteDAO.selectFavorite();
+	}
+	public int addFavorite(String name, String url) {
+		return favoriteDAO.insertFavorite(name, url);
 	}
 }
