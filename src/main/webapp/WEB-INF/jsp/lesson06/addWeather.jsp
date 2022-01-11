@@ -52,8 +52,8 @@
 						<option>비</option>
 					</select>
 				</label>
-				<label name="microDust">미세먼지
-					<select>
+				<label>미세먼지
+					<select  name="microDust">
 						<option>보통</option>
 						<option>좋음</option>
 						<option>나쁨</option>

@@ -3,6 +3,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
+ <!--  
  <mapper namespace="com.som.test.lesson02.dao.StoreDAO">
  
  	<select id="selectStoreList" resultType="com.som.test.lesson02.model.Store">
@@ -17,6 +18,25 @@
 			, `updatedAt`
 	 	FROM 
 	 		`store`
+ 	</select>
+ 
+ 
+ </mapper>
+ -->
+ 
+ <mapper namespace="com.som.test.lesson06.dao.StoreDAO">
+ 	<select id="selectStoreList" resultType="com.som.test.lesson06.model.Store">
+ 		SELECT INTO
+ 			`id`
+ 			, `name`
+ 			, `phoneNumber`
+ 			, `address`
+ 			, `businessNumber`
+ 			, `introduce`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM 
+ 			`store`	
  	</select>
  
  
