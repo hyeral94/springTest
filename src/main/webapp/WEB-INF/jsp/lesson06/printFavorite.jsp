@@ -22,6 +22,7 @@
 				<th>No.</th>
 				<th>이름</th>
 				<th>주소</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -30,10 +31,43 @@
 				<td>${status.count }</td>
 				<td>${favorite.name }</td>
 				<td><a href="{favorite.url }">${favorite.url }</a></td>
+				<td><button type="button" class="btn btn-danger btn-sm deleteBtn" data-favorite-id="${favorite.id }"><a href="#">삭제</button></a></td>
+				<!--  id(#)는 중복불가 class(.)는 중복 가능 / data-원하는 이름 -->
 			</tr>
 			</c:forEach>
 		</tbody>
 	
 	</table>
+	
+	<script>
+		$(document).ready(function(){
+			
+			$(".deleteBtn").on("click", function(){
+				let id = $(this).data("favorite-id");
+				
+				
+				$.ajax({
+					type:"get",
+					url:"/lesson06/delete_favoite",
+					data:{"id":id},
+					success:function(data){
+						alert("삭제성공");
+						location.reload;  //새로고침
+						}else{
+							alert("실패");
+						}
+						
+					},
+					error:function() {
+						alert("에러발생");
+					}
+					
+				});
+			});
+			
+			
+		});
+	
+	</script>
 </body>
 </html>

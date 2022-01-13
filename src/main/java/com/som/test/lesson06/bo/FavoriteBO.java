@@ -21,4 +21,18 @@ public class FavoriteBO {
 	public List<Favorite> getFavorite() {
 		return favoriteDAO.selectFavorite();
 	}
+	
+	public boolean getDuplicateUrl(String url) {//controller 에서 바로 대응할 수 있도록
+		int count = favoriteDAO.selectDuplicateUrl(url);
+		
+		if(count == 0) {
+			return false;
+		}else {
+			return  true;
+		}
+	}
+	
+	public int deleteFavorite(int id) {
+		return favoriteDAO.deleteFavorite(id);
+	}
 }

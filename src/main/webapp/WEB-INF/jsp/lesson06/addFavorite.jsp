@@ -4,23 +4,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
             
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
-
 <title>즐겨찾기 추가하기</title>
 </head>
 <body>
-	<h1>즐겨 찾기 추가하기</h1>
-
-	<label>이름</label><input type="text" class="form-control" name="name" id="nameInput">
-	<label>주소</label><input type="text" class="form-control" name="url" id="urlInput">
-	<button type="button" class="btn btn-success form-control" id="addBtn">추가</button>
+	<div class="container">
+		<h1>즐겨 찾기 추가하기</h1>
 	
+		<label>이름</label><input type="text" class="form-control" name="name" id="nameInput">
+		<div class="d-flex">
+			<label>주소</label><input type="text" class="form-control mr-3" name="url" id="urlInput">
+			<button type="button" class="btn btn-primary" id="urlCheck">중복확인</button>
+		</div>
+		<button type="button" class="btn btn-success form-control" id="addBtn">추가</button>
+		
+		<div>
+			<div id="duplicateText" class="d-none text-danger"><small>중복된 url 입니다.</small></div>
+			<div id="avilableText" class="d-none text-primary"><small>사용가능한 url 입니다.</small></div>
+		</div>
+	</div>
 
 	<script>
 		$(document).ready(function(){
@@ -38,7 +45,7 @@
 					alert("주소를 입력하세요");
 					return;
 				}
-					
+				
 				if(!(url.startsWith("http://") || url.startsWith("https://"))){
 					alert("주소 형식이 잘 못 되었습니다.");
 					return;
@@ -63,7 +70,42 @@
 				});
 				
 			});
+			
+			
+			$("#urlCheck").on("click", function(){
+				
+				let url = $("#urlInput").val();
+				
+				if(url == ""){
+					alert("주소를 입력하세요");
+					return;
+				}
+				
+				$.ajax({
+					type:"post",
+					url:"/lesson06/duplicate_url",
+					data:{"url":url},
+					success:function(data) {
+						if(data.isDuplicate == "true"){
+							$("#duplicateText").removeClass("d-none");
+							$("#avilableText").addClass("d-none");
+						}else{
+							$("#avilableText").removeClass("d-none");
+							$("#duplicateText").addClass("d-none");
+						}
+					},
+					error:function() {
+						alert("에러발생");
+					}
+					
+				});
+			
+				
+			});
+			
 		});
+		
+
 	
 	</script>
 	
