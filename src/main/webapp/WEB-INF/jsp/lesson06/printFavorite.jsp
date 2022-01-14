@@ -43,7 +43,7 @@
 		$(document).ready(function(){
 			
 			$(".deleteBtn").on("click", function(){
-				let id = $(this).data("favorite-id");
+				let id = $(this).data("favorite-id"); //this -> 현재발생한 이벤트를 가르킴
 				
 				
 				$.ajax({
@@ -52,11 +52,7 @@
 					data:{"id":id},
 					success:function(data){
 						alert("삭제성공");
-						location.reload;  //새로고침
-						}else{
-							alert("실패");
-						}
-						
+						location.reload();  //새로고침
 					},
 					error:function() {
 						alert("에러발생");
