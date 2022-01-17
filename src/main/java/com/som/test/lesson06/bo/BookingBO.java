@@ -23,5 +23,12 @@ public class BookingBO {
 		return bookingDAO.selectBooking();
 	}
 	
-	public int deleteBooking()
+	public int deleteBooking(int id) {
+		return bookingDAO.deleteBooking(id);
+	}
+	
+	public Booking getCheckbooking(String name, String phoneNumber) {
+		return bookingDAO.selectCheckBooking(name, phoneNumber);
+	}
+
 }

@@ -63,13 +63,42 @@
 							</c:if>
 							
 						
-							<td><button type="button" class="btn btn-danger btn-sm">삭제</button></td>
+							<td><button type="button" class="btn btn-danger btn-sm deleteBtn" data-booking-id="${booking.id }">삭제</button></td>
 						</tr>
 					</c:forEach>
 					</tbody>
 					
 				</table>
 
+		<script>
+			$(document).ready(function(){
+				$(".deleteBtn").on("click", function(){
+					let bookingId = $(this).data("booking-id"); //this -> 현재발생한 이벤트를 가르킴
+					
+					
+					$.ajax({
+						type:"get",
+						url:"/lesson06/test03/delete_booking",
+						data:{"id":bookingId},
+						success:function(data){
+							//alert("삭제성공")
+							//location.reload();
+							if(data.result == "success"){
+								alert("삭제 성공");
+							}else{
+								alert("삭제 실패");
+							}
+						},
+						error:function() {
+							alert("에러발생");
+						}
+						
+					});
+				});
+				
+				
+			});
+		</script>
 		</section>
 		<footer class="mt-3 ml-4">
 			<address class="text-secondary">

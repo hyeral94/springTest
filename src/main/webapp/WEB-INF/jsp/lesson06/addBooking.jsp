@@ -52,7 +52,14 @@
 		</footer>
 		
 		<script>
+   
 			$(document).ready(function(){
+			    // 데이트 피커 셋팅
+	            //$( "#dateInput" ).datepicker({
+	            //    minDate:0, 
+	            //   dateFormat: "yy년 m월 d일",
+	            //});
+			    
 				$("#addBtn").on("click", function(){
 					let name = $("#nameInpt").val();
 					let date = $("#dateInput").val();

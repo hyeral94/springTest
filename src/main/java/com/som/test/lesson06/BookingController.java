@@ -1,7 +1,9 @@
 package com.som.test.lesson06;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -55,11 +57,44 @@ public class BookingController {
 		return "lesson06/printBooking";
 	}
 	
-	@
-	public String deleteBooking() {
+	@ResponseBody
+	@GetMapping("/lesson06/test03/delete_book)ing")
+	public Map<String, String> deleteBooking(@RequestParam("id") int id) {
+//	String deleteBooking(@RequestParam("id") int id) {
+		
+		Map<String, String> result = new HashMap<>();
+		
+		int count = bookingBO.deleteBooking(id);
+		
+		if(count == 1) {
+			result.put("result", "success");		
+		}else {
+			result.put("result", "fail");
+		}
+//		if(count == 0) {
+//			return "fail";
+//		}else {
+//			return "success";
+//		}
+		
+		return result;
 		
 	}
 	
+	@GetMapping("/lesson06/test03/check_booking_view")
+	public String checkBookingView() {
+		return "lesson06/checkBooking";
+	}
+	
+	@ResponseBody
+	@GetMapping("/lesson06/test03/check_booking")
+	public Booking checkBooking(@RequestParam("name") String name, @RequestParam("phoneNumber") String phoneNumber) {
+
+		Booking booking = bookingBO.getCheckbooking(name, phoneNumber);
+
+		return booking;
+		
+	}
 	
 }
 
