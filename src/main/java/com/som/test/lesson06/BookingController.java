@@ -91,7 +91,7 @@ public class BookingController {
 	public Booking checkBooking(@RequestParam("name") String name, @RequestParam("phoneNumber") String phoneNumber) {
 
 		Booking booking = bookingBO.getCheckbooking(name, phoneNumber);
-
+		
 		return booking;
 		
 	}

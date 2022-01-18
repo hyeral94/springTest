@@ -76,42 +76,46 @@
 	</div>
    
 	   <script>
-	   		$(document).ready(function(){
-	   			$("#checkBtn").on("click", function(){
-	   				let name = $("#nameInput").val();
-	   				let phoneNumber = $("#phoneNumberInput").val();
-	   				
-	   				if(name == ""){
-	   					alert("이름을 입력하세요");
-	   					return;
-	   				}
-	   				
-	   				if(phoneNumber == ""){
-	   					alert("전화번호를 입력하세요");
-	   					return;
-	   				}
-	   				
-	   				$.ajax({
-	   					type:"get",
-	   					url:"/lesson06/test03/check_booking",
-	   					data:{"name":name, "phoneNumber":phoneNumber}.
-	   					succress:function(data){
-	   						alert(
-	   							"이름 : " + data.name + "\n"
-	   							+ "인원 : " + data.headcount + "\n"
-	   							+ "상태 : " + data.state
-	   						);
-	   						}else{
-	   							alert("조회 결과가 없습니다.");
-	   						}
-	   						
-	   					},
-	   					error:function() {
-	   						alert("에러 발생");
-	   					}
-	   				});
-	   			});
-	   		});
+			$(document).ready(function(){
+				$("#checkBtn").on("click", function(){
+					let name = $("#nameInput").val();
+					let phoneNumber = $("#phoneNumberInput").val();
+					
+					if(name == ""){
+						alert("이름을 입력하세요.");
+						return;
+					}
+					
+					
+					if(phoneNumber == ""){
+						alert("전화번호를 입력하세요.");
+						return;
+					}
+					
+					$.ajax({
+						type:"get",
+						url:"/lesson06/test03/check_booking",
+						data:{"name":name,"phoneNumber":phoneNumber},
+						success:function(data){
+							if(data == ""){
+								alert("조회된 결과가 없습니다.");
+							}else{
+								alert(
+										"이름 : " + data.name + "\n"
+										+ "인원 : " + data.headcount + "\n"
+										+ "상태 : " + data.state
+									);				
+							}
+						
+						},
+						error:function() {
+							alert("에러 발생");
+						}
+						
+					});
+					
+				});
+			});
 	  
 	   </script>
 	            

@@ -73,13 +73,13 @@
 		<script>
 			$(document).ready(function(){
 				$(".deleteBtn").on("click", function(){
-					let bookingId = $(this).data("booking-id"); //this -> 현재발생한 이벤트를 가르킴
+					let deleteId = $(this).data("booking-id"); //this -> 현재발생한 이벤트를 가르킴
 					
 					
 					$.ajax({
 						type:"get",
 						url:"/lesson06/test03/delete_booking",
-						data:{"id":bookingId},
+						data:{"id":deleteId},
 						success:function(data){
 							//alert("삭제성공")
 							//location.reload();
